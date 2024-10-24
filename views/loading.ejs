@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chargement...</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Les résultats sont en cours de traitement...</h1>
+        <div class="loader"></div>
+        <div id="status"></div>
+    </div>
+
+    <script>
+        const outputFileName = '<%= outputFileName %>';
+    
+        let checkInterval;
+        let timeout = setTimeout(() => {
+            clearInterval(checkInterval);
+            document.getElementById('status').innerText = "Le traitement a pris trop de temps. Veuillez réessayer plus tard.";
+        }, 60000);
+    
+        function checkFile() {
+            fetch(`/check-file/${outputFileName}`)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.exists) {
+                        clearInterval(checkInterval);
+                        clearTimeout(timeout);
+                        window.location.href = `/result/${outputFileName}`;
+                    }
+                })
+                .catch(error => {
+                    console.error('Erreur lors de la vérification du fichier', error);
+                });
+        }
+    
+        checkInterval = setInterval(checkFile, 1000);
+    </script>
+    
+</body>
+</html>
