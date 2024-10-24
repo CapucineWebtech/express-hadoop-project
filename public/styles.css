@@ -74,3 +74,14 @@ h1 {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
 }
+
+.results {
+    max-height: 400px; /* Limite la hauteur maximale */
+    overflow-y: auto; /* Ajoute une barre de défilement verticale si nécessaire */
+    padding: 10px; /* Ajoute un espace intérieur */
+    background-color: #f9f9f9; /* Ajoute un fond pour différencier */
+    border: 1px solid #ccc; /* Ajoute une bordure légère */
+    border-radius: 4px; /* Bordures arrondies */
+    text-align: left; /* Aligne le texte à gauche pour plus de lisibilité */
+    white-space: pre-wrap; /* Maintient les sauts de ligne et espaces */
+}

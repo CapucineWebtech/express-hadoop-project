@@ -20,7 +20,7 @@
         let timeout = setTimeout(() => {
             clearInterval(checkInterval);
             document.getElementById('status').innerText = "Le traitement a pris trop de temps. Veuillez réessayer plus tard.";
-        }, 60000);
+        }, 30 * 60 * 1000);
     
         function checkFile() {
             fetch(`/check-file/${outputFileName}`)

@@ -14,8 +14,27 @@
                 <label for="file" class="upload-label">Choisir un fichier :</label>
                 <input type="file" name="file" id="file" class="upload-input" />
             </div>
+            <button type="button" class="upload-btn" id="toggleCutBtn">Couper la chaîne</button>
+            
+            <div id="cut-section" style="display: none;">
+                <label for="cutLength" class="upload-label">Couper tous les X caractères :</label>
+                <input type="number" name="cutLength" id="cutLength" class="upload-input" />
+            </div>
+
             <button type="submit" class="upload-btn">Uploader le fichier</button>
         </form>
     </div>
+
+    <script>
+        document.getElementById('toggleCutBtn').addEventListener('click', function () {
+            const cutSection = document.getElementById('cut-section');
+            if (cutSection.style.display === 'none') {
+                cutSection.style.display = 'block';
+            } else {
+                cutSection.style.display = 'none';
+                document.getElementById('cutLength').value = '';
+            }
+        });
+    </script>
 </body>
 </html>
